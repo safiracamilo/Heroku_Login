@@ -8,17 +8,16 @@ class BasePage():
         self.driver = driver  # Este é o Selenium (a bola)
 
     def _entrar(self, url):
-
         self.driver.get(url)
 
-    def encontrar(self, locator):
+    def _encontrar(self, locator):
         return self.driver.find_element(locator['by'], locator['value'])
 
-    def clicar(selfs, locator):
-        selfs.encontrar(locator).click()
+    def _clicar(selfs, locator):
+        selfs._encontrar(locator).click()
 
-    def escrever(self, locator, text):
-        self.escrever(locator).send_keys(text)
+    def _escrever(self, locator, text):
+        self._encontrar(locator).send_keys(text)
 
     def _aparecer(self, locator, timeout=0):
         if timeout > 0:
